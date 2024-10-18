@@ -1,9 +1,12 @@
 from flask import Flask, render_template
 from pymongo import MongoClient
+import os
 
 app = Flask(__name__)
 
-client = MongoClient("mongodb+srv://bhanuprakashkorrapati04%40gmail.com:Bhanu%4004@cluster0.cnpj6.mongodb.net/shop_db?retryWrites=true&w=majority")
+MONGODB_USERNAME = os.getenv('MONGODB_USERNAME')
+MONGODB_PASSWORD = os.getenv('MONGODB_PASSWORD')
+client = MongoClient(f"mongodb+srv://{MONGODB_USERNAME}:{MONGODB_PASSWORD}@cluster0.cnpj6.mongodb.net/shop_db?retryWrites=true&w=majority")
 db = client['shop_db']
 products_collection = db['products']
 
