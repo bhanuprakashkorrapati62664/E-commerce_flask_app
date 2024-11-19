@@ -37,5 +37,7 @@ jobs:
       - name: Run Tests
         env:
           MONGODB_URI: "mongodb://localhost:27017"
+          user_name: ${{ secrets.user_name }} # Load user_name from GitHub Secrets
+          password: ${{ secrets.password }} # Load password from GitHub Secrets
         run: |
           pytest --maxfail=1 --disable-warnings -v
